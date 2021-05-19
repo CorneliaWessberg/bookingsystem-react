@@ -2,9 +2,12 @@ import React from "react";
 import training from "./images/training.jpg";
 
 
-function Bookings({ key }) {
+function Bookings({ key }){
+
+    
     return (
         <>
+    
             <div class="flex justify-center flex-col">
                 <h1 class="italic text-gray-800 text-2xl p-3.5">Thanks for your booking! Here you can see all your booked classes. </h1><br />
                 <div class="w-96 my-4 max-h-150 p-5 rounded-md overflow-hidden shadow-lg flex justify-center">

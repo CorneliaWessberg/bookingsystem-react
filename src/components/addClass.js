@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {Link} from "react-router-dom";
 import axios from "axios"; 
 
 function AddCLass() {
@@ -19,12 +18,38 @@ function AddCLass() {
 
     function onChange(e) {
         setAddClassValues({...addClassValues, [e.target.name]:e.target.value});
+        console.log(addClassValues)
     }
+
+    function OnChangeImg(e) {
+      setFileData(e.target.files[0])
+  }
 
     function onSubmit(e) {
         e.preventDefault();
-    }
 
+        axios.post("http://localhost:1337/products", {
+         name:addClassValues.name, 
+         time:addClassValues.time,
+         description:addClassValues.description,
+         duration: addClassValues.duration,
+    }).then( (res)=> {
+      console.log(res.data)
+
+      const data = new FormData();
+      data.append("files" , fileData)
+      data.append("refId", res.data.id)
+      data.append("field", "img")
+
+      axios.post("http://localhost:1337/upload",  data)
+        .then( (image)=> console.log(image))
+        .catch( (error)=> console.log(error))
+
+     }).catch(  (err)=> {
+            console.log(err)
+
+    })
+  }
     return (
         <>
 
@@ -42,27 +67,27 @@ function AddCLass() {
 
         <div>
           <label for="email-address" className="sr-only">Class Description </label>
-          <input id="email-address" value={addClassValues.time} onChange={onChange}  name="description" type="text" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Time"/>
+          <input id="email-address" value={addClassValues.time} onChange={onChange}  name="time" type="number" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Time"/>
         </div>
 
         <div>
           <label for="email-address" className="sr-only">Class instructor </label>
-          <input id="email-address" value={addClassValues.description} onChange={onChange}  name="price" type="text" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Description"/>
+          <input id="email-address" value={addClassValues.description} onChange={onChange}  name="description" type="text" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Description"/>
         </div>
 
         <div>
           <label for="email-address" className="sr-only">Class time</label>
-          <input id="email-address" value={addClassValues.duration} onChange={onChange}  name="price" type="number" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Duration"/>
+          <input id="email-address" value={addClassValues.duration} onChange={onChange}  name="duration" type="number" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Duration"/>
         </div>
 
 
-       <input type="file" name="file" id="" />
+       <input type="file" name="file" id="" onChange={OnChangeImg}/>
 
   
      <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-gray-800 px-4 py-3 bg-gray-300 rounded hover:bg-gray-800 hover:text-white transition duration-200 mt-12">  
           <span className="absolute left-0 inset-y-0 flex items-center pl-3">  
           </span>
-          Add product 
+          Add class
         </button> 
             
             </form>

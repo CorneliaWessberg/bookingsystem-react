@@ -1,23 +1,22 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
-import training from "./images/training.jpg";
+import {useHistory} from "react-router-dom";
 import Modal from "react-modal";
 import axios from "axios";
+import logo from "./images/logo.png";
 
 
-function Card({className, classTime, classDescription, classDuration}) {
+function Card({className, classTime, classDescription, classDuration, image}) {
 
   const customStyles = {
     content : {
-      background            : "gray",
-      padding:                "20px",
-      height                : "300px",
-      top                   : '50%',
-      left                  : '50%',
-      right                 : 'auto',
-      bottom                : 'auto',
-      marginRight           : '-50%',
-      transform             : 'translate(-50%, -50%)'
+      background : "white",
+      top: '20%',
+      left: '47%',
+      right: 'auto',
+      bottom: 'auto',
+      width: '40%',
+      transform: 'translate(-40%, -10%)'
     }
   };
 
@@ -28,8 +27,18 @@ function Card({className, classTime, classDescription, classDuration}) {
 
   }
 
+  const history = useHistory();
+
+  function confirmedBooking() {
+    history.push("/bookings")
+    window.location.reload();
+  }
+  
+
   const [modalIsOpen,setIsOpen] = useState(false);
   const [formValues, setFormValues] = useState(initialValues)
+  const [error, setError] = useState("")
+  const [confirmation, setConfirmation] = useState(false)
 
   function openModal() {
     setIsOpen(true)
@@ -41,28 +50,33 @@ function Card({className, classTime, classDescription, classDuration}) {
    }
 
 
-   function onHandleChange(e) {
+   function onChange(e) {
      setFormValues({...formValues, [e.target.name]:e.target.value})
+
+     console.log(formValues)
    }
 
-   async function onHandleSubmit(e) {
+   async function onSubmit(e) {
      e.preventDefault();
 
      try {
 
-      // om det är två ord 
-      const response=  await axios.post("http://localhost:1337/user-bookings", {
-      name:formValues.name,
-      timeToAppointment:formValues.timeToAppointment,
+      const response =  await axios.post("http://localhost:1337/bookings", {
+      firstname:formValues.firstname,
+      lastname:formValues.lastname,
       mobile:Number(formValues.mobile)
-  })
 
+      
+  })
+    setConfirmation(true)
       console.log(response)
 }
       catch(error) {
-
-      console.log(error.data)
+        setError("Something went wrong, try again");
+        
+        console.log(error)
 }
+
    }
 
 
@@ -73,7 +87,7 @@ function Card({className, classTime, classDescription, classDuration}) {
  
     <div class="px-4 py-4">
       <div class="font-bold text-xl mb-2 p-3.5">{className}</div>
-      <img src={training}/>
+     {/* <img src={`http://localhost:1337${image.formats.small.url}`} alt="image from database"/>*/}
       <p class="text-gray-700 text-base p-2">Time: {classTime}</p>
       <p class="text-gray-700 text-base p-2">Description: {classDescription}</p>
       <p class="text-gray-700 text-base p-2">Duration: {classDuration}</p>
@@ -93,19 +107,48 @@ function Card({className, classTime, classDescription, classDuration}) {
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
           style={customStyles}
+          ariaHideApp={false}
           contentLabel="Example Modal">
-            
-          
-          <div>Complete your booking here</div>
-          <form onSubmit= {onHandleSubmit}>
-          Firstname: <input type="text" name="firstname" value={formValues.firstname}  onChange={onHandleChange} /><br/>
-          Lastname:<input type="text" name="lastname" value={formValues.lastname}  onChange={onHandleChange}  /><br/>
-          Mobile: <input type="number" name="mobile"  value={formValues.mobile}    onChange={onHandleChange} /><br/>
-              <button type="submit">Confirm</button><br/>
-              <button onClick={closeModal}>close</button>
-          </form>
-
-            </Modal>
+            {confirmation ? <div> Thanks for your booking! see all your bookings <strong><Link to="/bookings">HERE</Link></strong></div>
+            :<div class="bg-white lg:w-5/6 md:6/12 w-10/12 m-auto my-10 shadow-md">
+                <div class="py-8 px-8 rounded-xl">
+                <button onClick={closeModal}>X</button>
+                <h1>{error}</h1>
+                    <h1 class="font-medium text-2xl mt-3 text-center">Confirm booking</h1>
+                    <form action="" class="mt-6" onSubmit={onSubmit} method="POST">
+                        <div class="my-5 text-sm">
+                            <label for="username" class="block text-black">firstname:</label>
+                            <input type="text" autofocus id="username" class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Username"
+                             value={formValues.firstname}
+                             name="firstname"
+                             onChange={onChange}
+                             placeholder="firstname" />
+                        </div>
+                        <div class="my-5 text-sm">
+                            <label for="username" class="block text-black">lastname:</label>
+                            <input type="text" autofocus id="email" class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Username" 
+                            value={formValues.lastname}
+                            name="lastname"
+                            onChange={onChange}
+                            placeholder="lastname"/>
+                        </div>
+                        <div class="my-5 text-sm">
+                            <label for="password" class="block text-black">mobile:</label>
+                            <input type="number" id="password" class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Password"
+                             value={formValues.mobile}
+                             name="mobile"
+                             onChange={onChange}
+                             placeholder="mobile" />
+                            <div class="flex justify-end mt-2 text-xs text-gray-600">
+                            </div>
+                        </div>
+    
+                        <button class="block text-center text-white bg-gray-800 p-3 duration-300 rounded-sm hover:bg-black w-full">Confirm</button>
+                    </form>
+    
+              </div>
+              </div>
+}</Modal>
 </>
 
           
@@ -115,27 +158,22 @@ function Card({className, classTime, classDescription, classDuration}) {
 function Card2({memberDuration, memberInfo, memberPrice}) {
     return (
       <>
-
-  <div class="w-3/4 my-4 max-h-150 p-5 rounded-md overflow-hidden shadow-lg flex justify-center">
- 
-  <div class="px-4 py-4">
-    <div class="font-bold text-xl mb-2 p-3.5">{memberDuration}</div>
-
-    <p class="text-gray-700 text-base p-2">
-     About: {memberInfo}
-    </p>
-    <p class="text-gray-700 text-base p-2">Price: {memberPrice} ;- </p>
+<div class="flex ">
+<div class="m-8 w-full bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
+      <div id="header" class="flex"> 
+         <img alt="mountain" class="w-45 rounded-md border-2 border-gray-300" src={logo} width="250" height="250" />
+         <div id="body" class="flex flex-col ml-5">
+            <h3 id="name" class="text-xl font-semibold mb-2">{memberDuration}</h3>
+            <p id="job" class="text-gray-800 mt-2">Description: {memberInfo}</p>
+            <h3 id="name" class="text-xl font-semibold mb-2">Price: {memberPrice}</h3>
+            <Link to="/cardlist"><button class="flex justify-center text-gray-800 px-4 py-3 bg-gray-300 rounded hover:bg-gray-800 hover:text-white transition duration-200 mt-12"> BUY</button></Link>
+            <div class="flex mt-5">
+               </div>
+         </div>
+      </div>
+   </div>
+   </div>
    
-    <div class="px-6 pt-4 pb-2">
-      <Link to="./form">
-    <button class="flex justify-center text-indigo-500 px-4 py-3 bg-gray-300 rounded hover:bg-indigo-500 hover:text-white transition duration-200">
-    Sign up
-    </button>
-    </Link>
-  </div>
-  </div>
-  
-</div>
 
       </>
     )

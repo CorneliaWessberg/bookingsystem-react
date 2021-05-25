@@ -7,10 +7,12 @@ import Login from "./login";
 import Bookings from "./bookings";
 import MemberShipsList from "./memberships";
 import Registration from "./registration";
+import Logout from "./logout";
 
 import {Route, BrowserRouter as Router} from "react-router-dom";
 import Footer from "./footer";
 import AddCLass from "./addClass";
+import ForgotPassword from "./forgotPassword";
 
 
 
@@ -28,6 +30,8 @@ export default function RouteApp() {
                 <Route path="/login" component={Login} />
                 <Route path="/bookings" component={Bookings} />
                 <Route path="/registration" component={Registration} />
+                <Route path="/logout" component={Logout}></Route>
+                <Route path="/forgotPassword" component={ForgotPassword}></Route>
 
                 <Footer/>
                 

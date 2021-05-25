@@ -1,33 +1,96 @@
 import React, {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
+import axios from "axios"; 
+import {useHistory} from "react-router-dom";
 
 
 function Login() {
 
-      const intialValues = {
+     const intialValues = {
         email:"",
         password:""
       }
 
       const [formValues, setFormValues]= useState(intialValues)
+      const [jwt, setJwt] = useState("")
+      const history = useHistory();
+      const [error, setError] = useState("")
+      
+
+      function onChange(e) {
+        setFormValues({...formValues, [e.target.name]: e.target.value})
+      }
+
+      useEffect(()=> {
+
+        const JWT = localStorage.getItem("jwt")
+        setJwt(JWT);
+
+      }, []);
+
+      function onSubmit(e) {
+        e.preventDefault();
+
+        axios.post('http://localhost:1337/auth/local', {
+          identifier: formValues.email, 
+          password: formValues.password,
+        })
+      .then(response => {
+
+        console.log('User profile', response.data.user);
+        console.log('User token', response.data.jwt);
+
+        localStorage.setItem("jwt", response.data.jwt)
+        localStorage.setItem("userId", response.data.user.id)
+        localStorage.setItem("userEmail", response.data.user.email)
+        localStorage.setItem("username", response.data.user.username)
+
+        history.push("/cardlist")
+        window.location.reload();
+       
+      
+       
+      })
+      .catch ( (err) =>{
+        console.log(err)
+        setError("Your informationen doesn't match any user, try again!")
+      })
+      }
+
+      
+
+        function forgotpassword() {
+                axios
+                .post('http://localhost:1337/auth/forgot-password', {
+                  email: 'cornelia.wessnass@gmail.com', 
+                })
+                .then(response => {
+                  console.log('Your user received an email', response);
+                })
+                .catch(error => {
+                  console.log('error', error.response);
+                });
+            }
 
 
   return (
     <>
-
-<div class="bg-white lg:w-4/12 md:6/12 w-10/12 m-auto my-10 shadow-md">
+  
+     
+   <div class="bg-white lg:w-4/12 md:6/12 w-10/12 m-auto my-10 shadow-md">
             <div class="py-8 px-8 rounded-xl">
                 <h1 class="font-medium text-2xl mt-3 text-center">Login</h1>
-                <form action="" class="mt-6">
-                    <div class="my-5 text-sm">
+                <h1>{error}</h1>
+                <form class="mt-6" onSubmit={onSubmit} method="POST" >
+                 <div class="my-5 text-sm">
                         <label for="username" class="block text-black">E-mail</label>
-                        <input type="text" autofocus id="username" class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Username" />
+                        <input type="text" name="email" autofocus id="username" value={formValues.email} onChange={onChange} class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="E-mail" />
                     </div>
                     <div class="my-5 text-sm">
                         <label for="password" class="block text-black">Password</label>
-                        <input type="password" id="password" class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Password" />
+                        <input type="password" name="password" id="password" value={formValues.password} onChange={onChange} class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Password" />
                         <div class="flex justify-end mt-2 text-xs text-gray-600">
-                           <a href="../../pages/auth/forget_password.html hover:text-black">Forget Password?</a>
+                           <Link to="/forgotPassword">Forget Password?</Link>
                         </div>
                     </div>
 
@@ -53,7 +116,7 @@ function Login() {
 
             </div>
         </div>
-    </>
+</>
   )
 }
 

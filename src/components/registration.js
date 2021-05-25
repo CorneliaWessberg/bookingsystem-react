@@ -77,10 +77,21 @@ function Registration() {
         <>
         {loggedIn ?
 
-        <div> <h1>Sucessfully registrated, you can now login!</h1>
-           <Link to="./login">Login</Link></div>
-            :
-            <div class="bg-white lg:w-4/12 md:6/12 w-10/12 m-auto my-10 shadow-md">
+<div class="flex ">
+<div class="m-8 w-screen bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
+      <div id="header" class="flex">
+         <div id="body" class="flex flex-col ml-5">
+            <p id="job" class="text-gray-800 mt-2 font-bold text-3xl ">You are now registratet!</p>
+            <Link to="/login"><button class="flex justify-center text-gray-800 px-4 py-3 bg-gray-300 rounded hover:bg-gray-800 hover:text-white transition duration-200 mt-12"> To login
+            </button></Link>
+            <div class="flex mt-5">
+               </div>
+         </div>
+      </div>
+   </div>
+  </div>
+            
+            :<div class="bg-white lg:w-4/12 md:6/12 w-10/12 m-auto my-10 shadow-md">
                 <div class="py-8 px-8 rounded-xl">
                     <h1 class="font-medium text-2xl mt-3 text-center">Register here</h1>
                     <form action="" class="mt-6" onSubmit={onSubmit}>

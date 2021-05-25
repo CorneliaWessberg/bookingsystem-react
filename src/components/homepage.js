@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { Card } from "./card";
+import React from 'react';
 import workout from "./images/workout.jpg";
 import logo from "./images/logo.png";
 import {Link} from "react-router-dom";
+
 
 
 

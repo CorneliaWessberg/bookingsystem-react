@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import {Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import axios from "axios";
 import logo from "./images/logo.png";
 
+//function där card med klass info skapas
+//Modal som öppnas för att slutföra bokning
 
 function Card({ className, classTime, classDescription, classDuration, image }) {
 
@@ -30,8 +32,10 @@ function Card({ className, classTime, classDescription, classDuration, image }) 
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [formValues, setFormValues] = useState(initialValues)
+
   const [error, setError] = useState("")
   const [confirmation, setConfirmation] = useState(false)
+
   const token = localStorage.getItem("jwt")
   const userId = useState(localStorage.getItem("userId"))
 
@@ -52,13 +56,10 @@ function Card({ className, classTime, classDescription, classDuration, image }) 
   }
 
   async function onSubmit(e) {
-    
+
     console.log(userId)
-    
+
     e.preventDefault();
-
-
-
 
     try {
 
@@ -66,14 +67,21 @@ function Card({ className, classTime, classDescription, classDuration, image }) 
         firstname: formValues.firstname,
         lastname: formValues.lastname,
         mobile: Number(formValues.mobile),
-        users_permissions_user:userId
-        
+        users_permissions_user: userId,
 
 
-      })
+
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      }
+      )
+
       setConfirmation(true)
       console.log(response)
     }
+
     catch (error) {
       setError("Something went wrong, try again");
       console.log(error)
@@ -85,7 +93,7 @@ function Card({ className, classTime, classDescription, classDuration, image }) 
 
 
 
-
+  //Om man inte är inloggad står det att man måste logga in och kan klicka sig till Login sidan
 
   return (
     <>
@@ -132,7 +140,7 @@ function Card({ className, classTime, classDescription, classDuration, image }) 
         </div>
 
         )
-
+        //När man slutfört sin bokning med sina uppgifter kommer upp ruta där man kan klicka vidare till mina bokningar
       }
 
       <Modal
@@ -187,6 +195,7 @@ function Card({ className, classTime, classDescription, classDuration, image }) 
 
   )
 }
+//function med Card2 för medlemskapen, inte klart ännu
 
 function Card2({ memberDuration, memberInfo, memberPrice }) {
   return (

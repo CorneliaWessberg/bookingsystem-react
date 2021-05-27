@@ -8,7 +8,8 @@ import MemberShipsList from "./memberships";
 import Registration from "./registration";
 import Logout from "./logout";
 
-import {Route, BrowserRouter as Router} from "react-router-dom";
+
+import { Route, BrowserRouter as Router } from "react-router-dom";
 import Footer from "./footer";
 import AddCLass from "./addClass";
 import ForgotPassword from "./forgotPassword";
@@ -20,7 +21,7 @@ export default function RouteApp() {
         <>
             <Router>
                 <Menu />
-                
+
                 <Route path="/" exact component={Homepage} />
                 <Route path="/addClass" component={AddCLass} />
                 <Route path="/cardlist" component={CardList} />
@@ -28,14 +29,15 @@ export default function RouteApp() {
                 <Route path="/login" component={Login} />
                 <Route path="/bookings" component={Bookings} />
                 <Route path="/registration" component={Registration} />
-                <Route path="/logout" component={Logout}/>
-                <Route path="/forgotPassword" component={ForgotPassword}/>
+                <Route path="/logout" component={Logout} />
+                <Route path="/forgotPassword" component={ForgotPassword} />
 
-                <Footer/>
-                
-            </Router> 
 
-            
+                <Footer />
+
+            </Router>
+
+
         </>
     )
 }

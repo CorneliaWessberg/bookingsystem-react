@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import training from "./images/training.jpg";
 
 
 function Bookings({ key }){
 
-    
+   
+
+
     return (
         <>
     

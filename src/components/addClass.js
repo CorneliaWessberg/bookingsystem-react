@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from "axios"; 
+import {useHistory, Link} from "react-router-dom";
 
 function AddCLass() {
 
@@ -13,7 +14,10 @@ function AddCLass() {
 
 
     const [addClassValues, setAddClassValues] = useState(initalValues)
-    const [fileData, setFileData] = useState()
+    const [fileData, setFileData] = useState();
+    const history = useHistory();
+    const [success, setSuccess] = useState(false);
+    
 
 
     function onChange(e) {
@@ -21,7 +25,7 @@ function AddCLass() {
         console.log(addClassValues)
     }
 
-    function OnChangeImg(e) {
+    function onChangeImg(e) {
       setFileData(e.target.files[0])
   }
 
@@ -33,11 +37,15 @@ function AddCLass() {
          time:addClassValues.time,
          description:addClassValues.description,
          duration: addClassValues.duration,
+
     }).then( (res)=> {
+     
       console.log(res.data)
 
       const data = new FormData();
+      
       data.append("files" , fileData)
+      data.append("ref", "product")
       data.append("refId", res.data.id)
       data.append("field", "img")
 
@@ -49,11 +57,14 @@ function AddCLass() {
             console.log(err)
 
     })
+    setSuccess(true)
+     /* history.push("/cardlist")
+      window.location.reload() */
   }
     return (
         <>
-
-<div className="min-h-screen flex items-center justify-center bg-gray-50 py-10 px-6 sm:px-6 lg:px-8">
+{success ? <div class="h-screen"> Your class was sucessfully uploaded, go to <strong><Link to="/cardlist">CLASSES</Link></strong> </div>
+:<div className="min-h-screen flex items-center justify-center bg-gray-50 py-10 px-6 sm:px-6 lg:px-8">
   <div className="max-w-md w-full space-y-8">
     <h1 className="justify-center font-bold text-3xl"> Add the classes you wish here</h1>
             <form  method="post" className="mt-8 space-y-6" onSubmit={onSubmit}>
@@ -81,7 +92,7 @@ function AddCLass() {
         </div>
 
 
-       <input type="file" name="file" id="" onChange={OnChangeImg}/>
+       <input type="file" name="file" id="" onChange={onChangeImg}/>
 
   
      <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-gray-800 px-4 py-3 bg-gray-300 rounded hover:bg-gray-800 hover:text-white transition duration-200 mt-12">  
@@ -95,7 +106,7 @@ function AddCLass() {
             </div>
         </div>
 
-</>
+}</>
     )
 }
 

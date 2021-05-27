@@ -3,25 +3,13 @@ import { Card } from "./card";
 import axios from "axios";
 
 
-
-const Classes = [
-
-    /*{key: "1", className: "Core", classTime: "13.00", classDescription: "Cattis", classDuration: "30min" },
-    { className: "Tabatha", classTime: "11.00", classDescription: "Tom", classDuration: "30min" },
-    { className: "HIT", classTime: "07.00", classDescription: "George", classDuration: "45min" },
-    { className: "Bodypump", classTime: "06.30", classDescription: "Mikaela", classDuration: "60min" },
-    { className: "Zumba", classTime: "05.30", classDescription: "Robin", classDuration: "60min" },
-    { className: "Spinning", classTime: "18.00", classDescription: "Will", classDuration: "45min" }*/ 
-]
-
-
 function CardList() {
 
 
     const [classes, setClasses] = useState([]);
-    const [loadPage, setLoadPage] = useState(3)
+    const [loadPage, setLoadPage] = useState(6);
     const [jwt, setJWT] = useState("")
-    const [username, setUsername] = useState("")
+    const username = localStorage.getItem("username")
 
     useEffect( ()=> {
         const JWT = localStorage.getItem("jwt")
@@ -31,30 +19,46 @@ function CardList() {
     useEffect(()=>{
 
         const fetchClasses = async()=>{
-            const response = await axios.get("http://localhost:1337/products")
+            const response = await axios.get(`http://localhost:1337/products?_limit=${loadPage}`)
+            console.log(response)
             setClasses(response.data)
         } 
 
         fetchClasses()
-    }, [])
+    }, [loadPage])
     
     
-    
+    function showMore() {
+
+        let dynamic = loadPage + 3;
+        setLoadPage(dynamic)
+    }
+
+    function showLess() {
+        setLoadPage(6)
+    }
     
 
     return (
         <>
         
+        <div className="md:text-6xl text-4xl text-black dark:text-white font-medium m-2 mb-4 text-center">Welcome {username}</div>
+       <div className="flex flex-row flex-wrap justify-center justify-evenly">
+           
 
-        <div className="flex flex-row flex-wrap justify-center justify-evenly">
-
-            {classes.map((products) => {
+                {classes.map((product) => {
                 return (
-                    <Card key={products.id} className={products.name} classTime={products.time} classDescription={products.description} classDuration={products.duration} image={products.img} />
+                    <Card key={product.id} className={product.name} classTime={product.time} classDescription={product.description} classDuration={product.duration} image={product.img} />
                 )
             })}
 
-        </div>
+            </div>  
+
+{loadPage >= classes.length ?  
+               (<button class="flex m-2 justify-center text-gray-800 px-4 py-3 bg-gray-300 rounded hover:bg-gray-800 hover:text-white transition duration-200" onClick={showMore}>Load more</button>) 
+               :
+               (<button class="flex m-2 justify-center text-gray-800 px-4 py-3 bg-gray-300 rounded hover:bg-gray-800 hover:text-white transition duration-200" onClick={showLess}>Show less</button>) }
+
 </>   )
 }
 

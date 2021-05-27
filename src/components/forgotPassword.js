@@ -17,7 +17,7 @@ function ForgotPassword() {
                 setReset(true)
             })
             .catch(error => {
-                console.log('An error occurred:', error.response);
+                console.log('error:', error.response);
             });
     }
 

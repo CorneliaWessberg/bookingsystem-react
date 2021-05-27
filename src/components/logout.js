@@ -1,18 +1,23 @@
 import React from "react"; 
 import {useHistory} from "react-router-dom"; 
 
+//Function för att logga ut användare
 
 function Logout() {
 
     const history = useHistory(); 
 
+    //När de klickar på knappen loggout
     function logoutUser(e) {
         localStorage.clear()
         history.push("./login")
         window.location.reload()
     }
+
+    //Om de inte vill logga ut blir de skickade tillbaka till alla classes när de klickar på knappen
     function toProducts(e) {
         history.push("/")
+        window.location.reload()
     }
 
 

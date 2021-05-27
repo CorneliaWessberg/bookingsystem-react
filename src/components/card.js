@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory, Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 import Modal from "react-modal";
 import axios from "axios";
 import logo from "./images/logo.png";
@@ -26,7 +26,6 @@ function Card({ className, classTime, classDescription, classDuration, image }) 
 
   }
 
-  const history = useHistory();
 
 
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -34,7 +33,7 @@ function Card({ className, classTime, classDescription, classDuration, image }) 
   const [error, setError] = useState("")
   const [confirmation, setConfirmation] = useState(false)
   const token = localStorage.getItem("jwt")
-  const userId = localStorage.getItem("userId")
+  const userId = useState(localStorage.getItem("userId"))
 
   function openModal() {
     setIsOpen(true)
@@ -53,7 +52,11 @@ function Card({ className, classTime, classDescription, classDuration, image }) 
   }
 
   async function onSubmit(e) {
+    
+    console.log(userId)
+    
     e.preventDefault();
+
 
 
 
@@ -62,7 +65,9 @@ function Card({ className, classTime, classDescription, classDuration, image }) 
       const response = await axios.post("http://localhost:1337/bookings", {
         firstname: formValues.firstname,
         lastname: formValues.lastname,
-        mobile: Number(formValues.mobile)
+        mobile: Number(formValues.mobile),
+        users_permissions_user:userId
+        
 
 
       })

@@ -53,24 +53,12 @@ function Login() {
       })
       .catch ( (err) =>{
         console.log(err)
-        setError("Your informationen doesn't match any user, try again!")
+        setError("Your informationen doesn't match any user, try again or register if you don't have an account :)")
       })
       }
 
       
 
-        function forgotpassword() {
-                axios
-                .post('http://localhost:1337/auth/forgot-password', {
-                  email: 'cornelia.wessnass@gmail.com', 
-                })
-                .then(response => {
-                  console.log('Your user received an email', response);
-                })
-                .catch(error => {
-                  console.log('error', error.response);
-                });
-            }
 
 
   return (

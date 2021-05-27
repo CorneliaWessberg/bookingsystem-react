@@ -52,7 +52,7 @@ function CardList() {
                 )
             })}
 
-            </div>  
+    </div>  
 
 {loadPage >= classes.length ?  
                (<button class="flex m-2 justify-center text-gray-800 px-4 py-3 bg-gray-300 rounded hover:bg-gray-800 hover:text-white transition duration-200" onClick={showMore}>Load more</button>) 

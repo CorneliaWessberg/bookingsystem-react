@@ -7,12 +7,12 @@ import Bookings from "./bookings";
 import MemberShipsList from "./memberships";
 import Registration from "./registration";
 import Logout from "./logout";
-
-
-import { Route, BrowserRouter as Router } from "react-router-dom";
 import Footer from "./footer";
 import AddCLass from "./addClass";
 import ForgotPassword from "./forgotPassword";
+
+
+import { Route, BrowserRouter as Router } from "react-router-dom";
 
 
 
@@ -31,7 +31,6 @@ export default function RouteApp() {
                 <Route path="/registration" component={Registration} />
                 <Route path="/logout" component={Logout} />
                 <Route path="/forgotPassword" component={ForgotPassword} />
-
 
                 <Footer />
 

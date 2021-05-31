@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card } from "./card";
+import {Card} from "./card";
 import axios from "axios";
 
 //function där alla classes loopas ut och visas på sidan

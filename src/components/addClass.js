@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
-import { useHistory, Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
 //function för att lägga till en ny klass med värden + bild
@@ -18,7 +18,6 @@ function AddCLass() {
 
   const [addClassValues, setAddClassValues] = useState(initalValues)
   const [fileData, setFileData] = useState();
-  const history = useHistory();
   const [success, setSuccess] = useState(false);
 
 
@@ -61,8 +60,7 @@ function AddCLass() {
 
     })
     setSuccess(true)
-    /* history.push("/cardlist")
-     window.location.reload() */
+    
   }
 
   //Om uppladdningen går bra kommer ruta upp där man kan klicka sig till classes sidan

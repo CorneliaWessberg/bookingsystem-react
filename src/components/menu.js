@@ -35,11 +35,11 @@ function Menu() {
                   <div class="hidden md:block"></div>
                   <div class="ml-10 flex items-baseline space-x-4"></div>
 
-                  <Link to="/cardlist" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg" aria-current="page">All Classes</Link>
-                  <Link to="/addClass" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg" aria-current="page">Add Class</Link>
-                  <Link to="/memberships" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg">Memberships</Link>
-                  <Link to="/bookings" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg">My bookings</Link>
-                  <Link to="/logout" className="absolute right-4 py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg">Logout</Link>
+                  <Link to="/cardlist" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg" aria-current="page">All Classes</Link>
+                  <Link to="/addClass" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg" aria-current="page">Add Class</Link>
+                  <Link to="/memberships" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg">Memberships</Link>
+                  <Link to="/bookings" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg">My bookings</Link>
+                  <Link to="/logout" class="absolute right-4 py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg">Logout</Link>
                 </div>
               </div>
             </div>
@@ -63,10 +63,10 @@ function Menu() {
                   <div class="hidden md:block"></div>
                   <div class="ml-10 flex items-baseline space-x-4"></div>
 
-                  <Link to="/cardlist" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg" aria-current="page">All Classes</Link>
-                  <Link to="/memberships" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg">Memberships</Link>
-                  <Link to="/registration" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg">Register</Link>
-                  <Link to="/login" className="absolute right-4 py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg">Login</Link>
+                  <Link to="/cardlist" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg" aria-current="page">All Classes</Link>
+                  <Link to="/memberships" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg">Memberships</Link>
+                  <Link to="/registration" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg">Register</Link>
+                  <Link to="/login" class="absolute right-4 py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg">Login</Link>
                 </div>
               </div>
             </div>

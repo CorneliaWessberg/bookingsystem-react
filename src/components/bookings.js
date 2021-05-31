@@ -37,18 +37,18 @@ function Bookings() {
 
     return (
         <>
-
-            <div class="text-3xl text-black dark:text-white font-medium m-2 mb-4 text-center">Hello <strong>{username}</strong>! Here you can see all your booked classes :)</div>
-            <div class=" h-screen flex flex-row flex-wrap justify-center justify-evenly">
+            <div class="h-screen">
+            <div class="text-3xl text-black dark:text-white font-medium m-2 mb-4 text-center">Hello <strong>{username}</strong>! Here you can see all your booked classes </div>
+            <div class="  flex flex-row flex-wrap justify-center justify-evenly">
 
 
                 {bookings.map((booking) => {
                     return (
-                        <BookingCard key={booking.id} bookingId={booking.id} name={booking.product.name} image={booking.product.Img} time={booking.product.time} />
+                        <BookingCard key={booking.id} bookingId={booking.id} firstname={booking.firstname} lastname={booking.lastname} bookedClass={booking.class} />
                     )
                 })}
 
-            </div>
+            </div></div>
         </>
     )
 }

@@ -37,7 +37,7 @@ function Card({ className, classTime, classDescription, classDuration, image }) 
   const [confirmation, setConfirmation] = useState(false)
 
   const token = localStorage.getItem("jwt")
-  const userId = useState(localStorage.getItem("userId"))
+  const userId = localStorage.getItem("userId")
 
   function openModal() {
     setIsOpen(true)
@@ -68,8 +68,10 @@ function Card({ className, classTime, classDescription, classDuration, image }) 
         lastname: formValues.lastname,
         mobile: Number(formValues.mobile),
         users_permissions_user: userId,
+        class: className,
+       
 
-
+      
 
       }, {
         headers: {
@@ -101,7 +103,7 @@ function Card({ className, classTime, classDescription, classDuration, image }) 
 
         <div class="justify-center text-center px-4 py-4">
           <div class="font-bold text-xl mb-2 p-3.5">{className}</div>
-          <img src={`http://localhost:1337${image.formats.small.url}`} alt="image from database" />
+          <img src={`http://localhost:1337${image.formats.small.url}`} alt="" />
           <p class="text-gray-700 text-base p-2"><strong>Time:</strong> {classTime}</p>
           <p class="text-gray-700 text-base p-2"><strong>Description: </strong> {classDescription}</p>
           <p class="text-gray-700 text-base p-2"><strong>Duration: </strong> {classDuration} min</p>
@@ -122,7 +124,7 @@ function Card({ className, classTime, classDescription, classDuration, image }) 
 
           <div class="justify-center text-center px-4 py-4">
             <div class="font-bold text-xl mb-2 p-3.5">{className}</div>
-            <img src={`http://localhost:1337${image.formats.small.url}`} alt="image from database" />
+            <img src={`http://localhost:1337${image.formats.small.url}`} alt="" />
             <p class="text-gray-700 text-base p-2"><strong>Time:</strong> {classTime}</p>
             <p class="text-gray-700 text-base p-2"><strong>Description: </strong> {classDescription}</p>
             <p class="text-gray-700 text-base p-2"><strong>Duration: </strong> {classDuration} min</p>
@@ -158,28 +160,28 @@ function Card({ className, classTime, classDescription, classDuration, image }) 
               <h1 class="font-medium text-2xl mt-3 text-center">Confirm booking</h1>
               <form action="" class="mt-6" onSubmit={onSubmit} method="POST">
                 <div class="my-5 text-sm">
-                  <label for="username" class="block text-black">firstname:</label>
-                  <input type="text" autofocus id="username" class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Username"
+                  <label class="block text-black">firstname:</label>
+                  <input type="text" id="firstname" class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Username"
                     value={formValues.firstname}
                     name="firstname"
                     onChange={onChange}
-                    placeholder="firstname" />
+                   />
                 </div>
                 <div class="my-5 text-sm">
-                  <label for="username" class="block text-black">lastname:</label>
-                  <input type="text" autofocus id="email" class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Username"
+                  <label class="block text-black">lastname:</label>
+                  <input type="text" id="lastname" class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Username"
                     value={formValues.lastname}
                     name="lastname"
                     onChange={onChange}
-                    placeholder="lastname" />
+                     />
                 </div>
                 <div class="my-5 text-sm">
-                  <label for="password" class="block text-black">mobile:</label>
-                  <input type="number" id="password" class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Password"
+                  <label class="block text-black">mobile:</label>
+                  <input type="number" id="mobile" class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Password"
                     value={formValues.mobile}
                     name="mobile"
                     onChange={onChange}
-                    placeholder="mobile" />
+                     />
                   <div class="flex justify-end mt-2 text-xs text-gray-600">
                   </div>
                 </div>

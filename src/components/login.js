@@ -72,11 +72,11 @@ function Login() {
           <h1>{error}</h1>
           <form class="mt-6" onSubmit={onSubmit} method="POST" >
             <div class="my-5 text-sm">
-              <label for="username" class="block text-black">E-mail</label>
-              <input type="text" name="email" autofocus id="username" value={formValues.email} onChange={onChange} class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="E-mail" />
+              <label class="block text-black">E-mail</label>
+              <input type="text" name="email" id="username" value={formValues.email} onChange={onChange} class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="E-mail" />
             </div>
             <div class="my-5 text-sm">
-              <label for="password" class="block text-black">Password</label>
+              <label class="block text-black">Password</label>
               <input type="password" name="password" id="password" value={formValues.password} onChange={onChange} class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Password" />
               <div class="flex justify-end mt-2 text-xs text-gray-600">
                 <Link to="/forgotPassword">Forget Password?</Link>

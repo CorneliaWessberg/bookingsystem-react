@@ -5,14 +5,14 @@ dotenv.config();
 
 // For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
 const firebaseConfig = {
-    apiKey: "API_KEY",
-    authDomain: "PROJECT_ID.firebaseapp.com",
-    databaseURL: "https://PROJECT_ID.firebaseio.com",
-    projectId: "PROJECT_ID",
-    storageBucket: "PROJECT_ID.appspot.com",
-    messagingSenderId: "SENDER_ID",
-    appId: "APP_ID",
-    measurementId: "G-MEASUREMENT_ID",
+  apiKey: "AIzaSyCfSfFPtztK1l_kKQ9-jtniofpUs-qSoPY",
+  authDomain: "wie20sproject-c95a9.firebaseapp.com",
+  databaseURL: "https://wie20sproject-c95a9-default-rtdb.firebaseio.com",
+  projectId: "wie20sproject-c95a9",
+  storageBucket: "wie20sproject-c95a9.appspot.com",
+  messagingSenderId: "208770914681",
+  appId: "1:208770914681:web:b059d625586bc48a53b7a8",
+  measurementId: "G-8DP57284XP",
   };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);

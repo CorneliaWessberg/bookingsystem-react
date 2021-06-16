@@ -15,7 +15,7 @@ function AddCLass() {
 
   }
 
-
+  const isAdmin = localStorage.getItem('role')
   const [addClassValues, setAddClassValues] = useState(initalValues)
   const [fileData, setFileData] = useState();
   const [success, setSuccess] = useState(false);
@@ -67,8 +67,8 @@ function AddCLass() {
 
   return (
     <>
-      {success ? <div class="h-screen"> Your class was sucessfully uploaded, go to <strong><Link to="/cardlist">CLASSES</Link></strong> </div>
-        : <div className="min-h-screen flex items-center justify-center bg-gray-50 py-10 px-6 sm:px-6 lg:px-8">
+      {success ? ( <div class="h-screen"> Your class was sucessfully uploaded, go to <strong><Link to="/cardlist">CLASSES</Link></strong> </div>)
+        : (<div className="min-h-screen flex items-center justify-center bg-gray-50 py-10 px-6 sm:px-6 lg:px-8">
           <div className="max-w-md w-full space-y-8">
             <h1 className="justify-center font-bold text-3xl"> Add the classes you wish here</h1>
             <form method="post" className="mt-8 space-y-6" onSubmit={onSubmit}>
@@ -108,7 +108,8 @@ function AddCLass() {
             </form>
 
           </div>
-        </div>
+        </div>) 
+        
 
       }</>
   )

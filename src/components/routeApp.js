@@ -10,9 +10,13 @@ import Logout from "./logout";
 import Footer from "./footer";
 import AddCLass from "./addClass";
 import ForgotPassword from "./forgotPassword";
+import Dashboard from "./adminDashboard";
+import Membership from "./membership";
 
 
 import { Route, BrowserRouter as Router } from "react-router-dom";
+
+
 
 
 
@@ -31,7 +35,8 @@ export default function RouteApp() {
                 <Route path="/registration" component={Registration} />
                 <Route path="/logout" component={Logout} />
                 <Route path="/forgotPassword" component={ForgotPassword} />
-
+                <Route path="/adminDashboard" component={Dashboard}/>
+                <Route path="/membership" component={Membership}/>
                 <Footer />
 
             </Router>

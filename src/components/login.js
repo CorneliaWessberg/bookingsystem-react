@@ -40,11 +40,15 @@ function Login() {
 
         console.log('User profile', response.data.user);
         console.log('User token', response.data.jwt);
+        console.log('User role', response.data.user.role.name)
 
+        localStorage.setItem("role", response.data.user.role.name)
         localStorage.setItem("jwt", response.data.jwt)
         localStorage.setItem("userId", response.data.user.id)
         localStorage.setItem("userEmail", response.data.user.email)
         localStorage.setItem("username", response.data.user.username)
+        
+        
 
         history.push("/cardlist")
         window.location.reload();
@@ -57,9 +61,6 @@ function Login() {
         setError("Your informationen doesn't match any user, try again or register if you don't have an account :)")
       })
   }
-
-
-
 
 
   return (

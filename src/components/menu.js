@@ -38,6 +38,7 @@ function Menu() {
                   <Link to="/cardlist" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg" aria-current="page">All Classes</Link>
                   <Link to="/memberships" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg">Memberships</Link>
                   <Link to="/bookings" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg">My bookings</Link>
+                  <Link to="/Profile"class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg">My Profile</Link>
                   {isAdmin === "admin" ? (<><Link to="/adminDashboard"  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg">Dashboard</Link>
                   <Link to="/addClass" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg" aria-current="page">Add Class</Link></>) : (<div></div>)}
                   <Link to="/logout" class="absolute right-4 py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-lg">Logout</Link>

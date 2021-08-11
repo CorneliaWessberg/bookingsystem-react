@@ -12,7 +12,8 @@ import AddCLass from "./addClass";
 import ForgotPassword from "./forgotPassword";
 import Dashboard from "./adminDashboard";
 import Membership from "./membership";
-
+import FirebaseForm from "./firebaseForm";
+import Profile from "./Profile";
 
 import { Route, BrowserRouter as Router } from "react-router-dom";
 
@@ -37,6 +38,8 @@ export default function RouteApp() {
                 <Route path="/forgotPassword" component={ForgotPassword} />
                 <Route path="/adminDashboard" component={Dashboard}/>
                 <Route path="/membership" component={Membership}/>
+                <Route path="/firebaseForm" component={FirebaseForm}/>
+                <Route path="/Profile" component={Profile}/>
                 <Footer />
 
             </Router>

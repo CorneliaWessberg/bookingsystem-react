@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from "react-router-dom";
 
 //function för footer som visas på alla sidor
 
@@ -20,6 +21,9 @@ function Footer() {
                     <div class="flex mx-auto text-white text-center">
                         Copyright Cornelia Wessberg © 2021
             </div>
+            <div class="flex mx-auto text-white text-center"><Link to="/contactForm">
+                Contact us here! 
+                </Link></div>
                 </div>
             </footer>
         </div>

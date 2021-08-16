@@ -50,30 +50,30 @@ function Profile() {
     }
 
     async function fileUpload(e) {
-    
+
         axios.post("http://localhost:1337/users", {
-            
-      
-          }).then((res) => {
-      
+
+
+        }).then((res) => {
+
             console.log(res.data)
-      
+
             const data = new FormData();
-      
+
             data.append("files", fileData)
             data.append("ref", "product")
             data.append("refId", res.data.id)
             data.append("field", "img")
-      
+
             axios.post("http://localhost:1337/upload", data)
-              .then((image) => console.log(image))
-              .catch((error) => console.log(error))
-      
-          }).catch((err) => {
+                .then((image) => console.log(image))
+                .catch((error) => console.log(error))
+
+        }).catch((err) => {
             console.log(err)
-      
-          })
-        }
+
+        })
+    }
 
 
 
@@ -191,7 +191,7 @@ function Profile() {
                             <button>Upload a profile picture</button>
                         </form>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="md:col-span-3 h-58 shadow-xl p-4 space-y-2 p-3">

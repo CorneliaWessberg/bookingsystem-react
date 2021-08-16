@@ -14,6 +14,9 @@ import Dashboard from "./adminDashboard";
 import Membership from "./membership";
 import FirebaseForm from "./firebaseForm";
 import Profile from "./Profile";
+import GetFirebaseData from "./readFirebase";
+import ContactForm from "./contactForm";
+import FirebaseDatainput from "./firebaseDatainput"
 
 import { Route, BrowserRouter as Router } from "react-router-dom";
 
@@ -40,6 +43,9 @@ export default function RouteApp() {
                 <Route path="/membership" component={Membership}/>
                 <Route path="/firebaseForm" component={FirebaseForm}/>
                 <Route path="/Profile" component={Profile}/>
+                <Route path="/readFirebase" component={GetFirebaseData}/>
+                <Route path="/contactForm" component={ContactForm}/>
+                <Route path="/firebaseDatainput" component={FirebaseDatainput}/>
                 <Footer />
 
             </Router>

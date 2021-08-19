@@ -5,14 +5,17 @@
   "dependencies": {
     "@craco/craco": "^6.1.1",
     "@stripe/stripe-js": "^1.15.0",
+    "@tailwindcss/postcss7-compat": "^2.1.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "autoprefixer": "^9.8.6",
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "dotenv": "^10.0.0",
     "emailjs-com": "^3.2.0",
     "firebase": "^8.6.7",
+    "postcss": "^7.0.36",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-modal": "^3.13.1",
@@ -20,7 +23,10 @@
     "react-scripts": "4.0.3",
     "strapi": "^3.6.2",
     "stripe": "^8.154.0",
-    "web-vitals": "^1.0.1"
+    "stylelint-config-standard": "^22.0.0",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.4",
+    "web-vitals": "^1.0.1",
+    "yarn": "^1.22.11"
   },
   "scripts": {
     "start": "craco start",
@@ -46,13 +52,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@tailwindcss/postcss7-compat": "^2.1.0",
-    "autoprefixer": "^9.8.6",
-    "postcss": "^7.0.36",
-    "stylelint-config-standard": "^22.0.0",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.4"
-  },
+  "devDependencies": {},
   "peerDependencies": {
     "postcss": "^8.0.0"
   }

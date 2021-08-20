@@ -12,7 +12,7 @@ function Profile() {
     const [bookings, setBookings] = useState([]);
 
 
-    const username = localStorage.getItem("username")
+    const username =useState( localStorage.getItem("username"))
     const userId = localStorage.getItem("userId")
     const email = localStorage.getItem("userEmail")
     const role = localStorage.getItem("role")
@@ -39,7 +39,7 @@ function Profile() {
         console.log(bookings);
 
         fetchData();
-    }, []);
+    }, [token, bookings, userId]);
 
 
 
@@ -120,7 +120,7 @@ function Profile() {
                     email: res.data.email
                 })
             })
-    }, [])
+    }, [token, userId])
 
 
     function handleOnChange(e) {

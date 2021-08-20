@@ -45,15 +45,15 @@ function Dashboard() {
     
 
     return (
-            <div class="h-screen">
-                <div class="flex">
-                  <div class="m-8 w-full bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
-                    <div id="header" class="flex">
-                      <div id="body" class="flex flex-col ml-5">
-                        <h3 id="name" class="text-xl font-semibold mb-2">Classes on website: {classes}</h3>
-                        <h3 id="name" class="text-xl font-semibold mb-2">Users on website: {users}</h3>
-                        <h3 id="name" class="text-xl font-semibold mb-2">Bookings on website: {bookings}</h3>
-                        <div class="flex mt-5">
+            <div className="h-screen">
+                <div className="flex">
+                  <div className="m-8 w-full bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg">
+                    <div id="header" className="flex">
+                      <div id="body" className="flex flex-col ml-5">
+                        <h3 id="name" className="text-xl font-semibold mb-2">Classes on website: {classes}</h3>
+                        <h3 id="name" className="text-xl font-semibold mb-2">Users on website: {users}</h3>
+                        <h3 id="name" className="text-xl font-semibold mb-2">Bookings on website: {bookings}</h3>
+                        <div className="flex mt-5">
                         </div>
                       </div>
                     </div>

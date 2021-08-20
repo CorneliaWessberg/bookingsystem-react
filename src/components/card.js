@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import axios from "axios";
-import logo from "./images/logo.png";
-import { loadStripe } from '@stripe/stripe-js';
+
 
 
 //function där card med klass info skapas
 //Modal som öppnas för att slutföra bokning
 
-const stripePromise = loadStripe('pk_test_51J2GIIBqmCfknoaAnanXPByjry9Im1Xj2OcaDhDgkLNPguFDmTwOPtgcTr9rP4zEQfEdxctMXhEDvjZUN8bSxkbH00NxnT121o');
+/*const stripePromise = loadStripe('pk_test_51J2GIIBqmCfknoaAnanXPByjry9Im1Xj2OcaDhDgkLNPguFDmTwOPtgcTr9rP4zEQfEdxctMXhEDvjZUN8bSxkbH00NxnT121o');*/
 
 function Card({ productId, className, classTime, classDescription, classDuration, image }) {
 

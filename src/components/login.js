@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
@@ -14,7 +14,7 @@ function Login() {
   }
 
   const [formValues, setFormValues] = useState(intialValues)
-  const [jwt, setJwt] = useState("")
+  /*const [jwt, setJwt] = useState("")*/
   const history = useHistory();
   const [error, setError] = useState("")
 
@@ -23,12 +23,12 @@ function Login() {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
 
-  useEffect(() => {
+  /*useEffect(() => {
 
     const JWT = localStorage.getItem("jwt")
     setJwt(JWT);
 
-  }, []);
+  }, []);*/
 
   function onSubmit(e) {
     e.preventDefault();

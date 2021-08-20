@@ -8,9 +8,9 @@ function Bookings() {
 
 
     const [bookings, setBookings] = useState([]);
-    const username = localStorage.getItem("username")
-    const userId = localStorage.getItem("userId")
-    const token = localStorage.getItem("jwt")
+    const [username] = useState(localStorage.getItem("username"))
+    const [ userId] = useState(localStorage.getItem("userId"))
+    const [token] =useState( localStorage.getItem("jwt"))
 
 
     useEffect(() => {
@@ -32,14 +32,14 @@ function Bookings() {
         console.log(bookings);
 
         fetchData();
-    }, []);
+    }, [token, bookings, userId]);
 
 
     return (
         <>
-            <div class="h-screen">
-            <div class="text-3xl text-black dark:text-white font-medium m-2 mb-4 text-center">Hello <strong>{username}</strong>! Here you can see all your booked classes </div>
-            <div class="  flex flex-row flex-wrap justify-center justify-evenly">
+            <div className="h-screen">
+            <div className="text-3xl text-black dark:text-white font-medium m-2 mb-4 text-center">Hello <strong>{username}</strong>! Here you can see all your booked classes </div>
+            <div className="  flex flex-row flex-wrap justify-center justify-evenly">
 
 
                 {bookings.map((booking) => {

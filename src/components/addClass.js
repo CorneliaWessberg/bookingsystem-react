@@ -15,7 +15,7 @@ function AddCLass() {
 
   }
 
-  const isAdmin = localStorage.getItem('role')
+  /*const isAdmin = localStorage.getItem('role')*/
   const [addClassValues, setAddClassValues] = useState(initalValues)
   const [fileData, setFileData] = useState();
   const [success, setSuccess] = useState(false);

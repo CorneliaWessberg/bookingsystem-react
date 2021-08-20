@@ -7,13 +7,13 @@ import axios from "axios";
 function MemberShipsList() {
 
     const [memberShip, setMembership] = useState([]);
-    const [jwt, setJWT] = useState("")
+   /* const [jwt, setJWT] = useState("")*/
     const username = localStorage.getItem("username")
 
-    useEffect(() => {
+    /*useEffect(() => {
         const JWT = localStorage.getItem("jwt")
         setJWT(JWT)
-    }, [])
+    }, [])*/
 
     useEffect(() => {
 

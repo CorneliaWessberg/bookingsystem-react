@@ -12,7 +12,7 @@ function Dashboard() {
     useEffect(() => {
 
         const getUsers = async () => {
-            const response = await axios.get(`http://localhost:1337/users`)
+            const response = await axios.get(`https://corneliabookingbackend.herokuapp.com/users`)
             console.log(response)
             setUsers(response.data.length)
         }
@@ -23,7 +23,7 @@ function Dashboard() {
     useEffect(() => {
 
         const getClasses = async () => {
-            const response = await axios.get(`http://localhost:1337/products`)
+            const response = await axios.get(`https://corneliabookingbackend.herokuapp.com/products`)
             console.log(response)
             setClasses(response.data.length)
         }
@@ -34,7 +34,7 @@ function Dashboard() {
     useEffect(() => {
 
         const getBookings = async () => {
-            const response = await axios.get(`http://localhost:1337/bookings`)
+            const response = await axios.get(`https://corneliabookingbackend.herokuapp.com/bookings`)
             console.log(response)
             setBookings(response.data.length)
         }

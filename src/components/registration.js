@@ -31,7 +31,7 @@ function Registration() {
         //strapi? för API och kunna registrera användaren. Glöm inte bocka i alla saker i inställningar
 
 
-        const response = axios.post('http://localhost:1337/auth/local/register', {
+        const response = axios.post('https://corneliabookingbackend.herokuapp.com/auth/local/register', {
             username: regValues.username,
             email: regValues.email,
             password: regValues.password,

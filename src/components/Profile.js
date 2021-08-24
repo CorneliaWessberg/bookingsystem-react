@@ -51,7 +51,7 @@ function Profile() {
 
     async function fileUpload(e) {
 
-        axios.post("http://localhost:1337/users", {
+        axios.post("https://corneliabookingbackend.herokuapp.com/users", {
 
 
         }).then((res) => {
@@ -65,7 +65,7 @@ function Profile() {
             data.append("refId", res.data.id)
             data.append("field", "img")
 
-            axios.post("http://localhost:1337/upload", data)
+            axios.post("https://corneliabookingbackend.herokuapp.com/upload", data)
                 .then((image) => console.log(image))
                 .catch((error) => console.log(error))
 
@@ -107,7 +107,7 @@ function Profile() {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:1337/users/${userId}`
+        axios.get(`https://corneliabookingbackend.herokuapp.com/users/${userId}`
             ,
             {
                 headers: {
@@ -135,7 +135,7 @@ function Profile() {
     async function handleOnSubmit(e) {
         e.preventDefault();
 
-        await axios.put(`http://localhost:1337/users/${userId}`, {
+        await axios.put(`https://corneliabookingbackend.herokuapp.com/${userId}`, {
             username: updateFormValues.username,
             email: updateFormValues.email
 
@@ -157,7 +157,7 @@ function Profile() {
 
         try {
 
-            const deleteUser = axios.delete(`http://localhost:1337/users/${userId}`,
+            const deleteUser = axios.delete(`https://corneliabookingbackend.herokuapp.com/${userId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,

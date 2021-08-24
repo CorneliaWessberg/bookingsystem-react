@@ -93,7 +93,7 @@ function Card({ productId, className, classTime, classDescription, classDuration
 
     try {
 
-      const response = await axios.post("http://localhost:1337/bookings", {
+      const response = await axios.post("https://corneliabookingbackend.herokuapp.com/bookings", {
         firstname: formValues.firstname,
         lastname: formValues.lastname,
         mobile: Number(formValues.mobile),
@@ -133,7 +133,7 @@ function Card({ productId, className, classTime, classDescription, classDuration
     console.log(updateVal.classtime)
     console.log()
 
-        await axios.put(`http://localhost:1337/products/${productId}`, {
+        await axios.put(`https://corneliabookingbackend.herokuapp.com/products/${productId}`, {
         name: updateVal.classname,
         time: Number(updateVal.classtime),
         description: updateVal.classdescription,
@@ -151,7 +151,7 @@ function Card({ productId, className, classTime, classDescription, classDuration
 
   function deleteClass() {
 
-    axios.delete(`http://localhost:1337/products/${productId}`)
+    axios.delete(`https://corneliabookingbackend.herokuapp.com/products/${productId}`)
     window.location.reload();
       
       
@@ -167,7 +167,7 @@ function Card({ productId, className, classTime, classDescription, classDuration
 
         <div class="justify-center text-center px-4 py-4">
           <div class="font-bold text-xl mb-2 p-3.5">{className}</div>
-          <img src={`http://localhost:1337${image.formats.small.url}`} alt="" />
+          <img src={`https://corneliabookingbackend.herokuapp.com${image.formats.small.url}`} alt="" />
           <p class="text-gray-700 text-base p-2"><strong>Time:</strong> {classTime}</p>
           <p class="text-gray-700 text-base p-2"><strong>Description: </strong> {classDescription}</p>
           <p class="text-gray-700 text-base p-2"><strong>Duration: </strong> {classDuration} min</p>
@@ -197,7 +197,7 @@ function Card({ productId, className, classTime, classDescription, classDuration
 
           <div class="justify-center text-center px-4 py-4">
             <div class="font-bold text-xl mb-2 p-3.5">{className}</div>
-            <img src={`http://localhost:1337${image.formats.small.url}`} alt="" />
+            <img src={`https://corneliabookingbackend.herokuapp.com${image.formats.small.url}`} alt="" />
             <p class="text-gray-700 text-base p-2"><strong>Time:</strong> {classTime}</p>
             <p class="text-gray-700 text-base p-2"><strong>Description: </strong> {classDescription}</p>
             <p class="text-gray-700 text-base p-2"><strong>Duration: </strong> {classDuration} min</p>

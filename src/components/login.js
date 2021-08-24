@@ -33,7 +33,7 @@ function Login() {
   function onSubmit(e) {
     e.preventDefault();
 
-    axios.post('http://localhost:1337/auth/local', {
+    axios.post('https://corneliabookingbackend.herokuapp.com/auth/local', {
       identifier: formValues.email,
       password: formValues.password,
     })

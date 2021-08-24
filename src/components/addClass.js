@@ -34,7 +34,7 @@ function AddCLass() {
   function onSubmit(e) {
     e.preventDefault();
 
-    axios.post("http://localhost:1337/products", {
+    axios.post("https://corneliabookingbackend.herokuapp.com/products", {
       name: addClassValues.name,
       time: addClassValues.time,
       description: addClassValues.description,
@@ -51,7 +51,7 @@ function AddCLass() {
       data.append("refId", res.data.id)
       data.append("field", "img")
 
-      axios.post("http://localhost:1337/upload", data)
+      axios.post("https://corneliabookingbackend.herokuapp.com/upload", data)
         .then((image) => console.log(image))
         .catch((error) => console.log(error))
 

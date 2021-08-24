@@ -18,7 +18,7 @@ function MemberShipsList() {
     useEffect(() => {
 
         const fetchMemberShips = async () => {
-            const response = await axios.get(`http://localhost:1337/memberships`)
+            const response = await axios.get(`https://corneliabookingbackend.herokuapp.com/memberships`)
             console.log(response)
             setMembership(response.data)
         }

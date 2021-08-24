@@ -10,7 +10,7 @@ function ForgotPassword() {
 
     function resetRequest() {
         axios
-            .post('http://localhost:1337/auth/forgot-password', {
+            .post('https://corneliabookingbackend.herokuapp.com/auth/forgot-password', {
                 email: 'cornelia.wessnass@gmail.com',
             })
             .then(response => {

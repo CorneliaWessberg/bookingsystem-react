@@ -21,7 +21,7 @@ function CardList() {
     useEffect(() => {
 
         const fetchClasses = async () => {
-            const response = await axios.get(`http://localhost:1337/products?_limit=${loadPage}`)
+            const response = await axios.get(`https://corneliabookingbackend.herokuapp.com/products?_limit=${loadPage}`)
             console.log(response)
             setClasses(response.data)
         }

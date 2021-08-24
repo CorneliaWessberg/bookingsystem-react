@@ -24,7 +24,7 @@ function ContactForm() {
       function onSubmit(e) {
         e.preventDefault();
     
-        axios.post("http://localhost:1337/contacts", {
+        axios.post("https://corneliabookingbackend.herokuapp.com/contacts", {
           name: contactValues.name,
           email: contactValues.email,
           message: contactValues.message

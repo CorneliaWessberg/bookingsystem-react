@@ -6,7 +6,7 @@ import axios from "axios";
 function BookingCard({bookingId, firstname, lastname, bookedClass}) {
 
     function cancelBooking() {
-        axios.delete(`http://localhost:1337/bookings/${bookingId}`)
+        axios.delete(`https://corneliabookingbackend.herokuapp.com/bookings/${bookingId}`)
         window.location.reload();
     }
 

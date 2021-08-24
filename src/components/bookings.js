@@ -18,7 +18,7 @@ function Bookings() {
         console.log(userId)
 
         const fetchData = async () => {
-            const response = await axios.get(`http://localhost:1337/bookings?users_permissions_user.id=${userId}`,
+            const response = await axios.get(`https://corneliabookingbackend.herokuapp.com/bookings?users_permissions_user.id=${userId}`,
                 {
                     headers: {
                         Authorization:

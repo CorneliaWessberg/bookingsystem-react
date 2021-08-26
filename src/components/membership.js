@@ -6,12 +6,12 @@ import logo from "./images/logo.png";
 
 
 dotenv.config();
-const stripePromise = loadStripe(process.env.REACT_APP_PK);
+/*const stripePromise = loadStripe(process.env.REACT_APP_PK);*/
 
 function Membership({ memberDuration, memberInfo, memberPrice }) {
 
   
-        const handleClick = async (event) => {
+       /* const handleClick = async (event) => {
             // Get Stripe.js instance
             const stripe = await stripePromise;
             const quantity = 1; // state /props 
@@ -36,7 +36,7 @@ function Membership({ memberDuration, memberInfo, memberPrice }) {
               // error, display the localized error message to your customer
               // using `result.error.message`.
             }
-          };
+          };*/
 
     return (        
           
@@ -49,7 +49,7 @@ function Membership({ memberDuration, memberInfo, memberPrice }) {
                         <h3 id="name" class="text-xl font-semibold mb-2">{memberDuration} Months</h3>
                         <p id="job" class="text-gray-800 mt-2">Description: {memberInfo}</p>
                         <h3 id="name" class="text-xl font-semibold mb-2">Price: {memberPrice};-</h3>
-                       <button onClick={handleClick} role ="link" class="flex justify-center text-gray-800 px-4 py-3 bg-gray-300 rounded hover:bg-gray-800 hover:text-white transition duration-200 mt-12"> BUY</button>
+                       <button role ="link" class="flex justify-center text-gray-800 px-4 py-3 bg-gray-300 rounded hover:bg-gray-800 hover:text-white transition duration-200 mt-12"> BUY</button>
                         <div class="flex mt-5">
                         </div>
                       </div>

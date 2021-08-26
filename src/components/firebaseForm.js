@@ -1,11 +1,7 @@
 import React, {useState} from 'react';
 import firestore from './firebaseConfig';
-import dotenv from 'dotenv'
-
-dotenv.config();
 
 
-console.log(process.env.REACT_AUTHDOMAIN)
 
 function FirebaseForm() {
 
@@ -18,25 +14,28 @@ function FirebaseForm() {
     const [addValues, setAddValues] = useState(initalValues);
 
     function onChange(e) {
+         
         setAddValues({ ...addValues, [e.target.name]: e.target.value });
         console.log(addValues)
     }
     
-    function onSubmit(e){
-        e.prevent.default();
+  async  function onSubmit(e){
+        e.preventDefault();
 
-        firestore.collection("test").add({
+    const res=  await firestore.collection("corni").add({
             name: addValues.name,
             age: Number(addValues.age),
             country: addValues.country
         })
-        .then((docRef) => {
+
+        console.log(res)
+       /*  .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
             console.log("Document written with ID: ", docRef);
         })
         .catch((error) => {
             console.error("Error adding document: ", error);
-        });
+        }); */
     }
 
     return (
@@ -45,7 +44,7 @@ function FirebaseForm() {
       <div className="min-h-screen flex items-center justify-center bg-gray-50 py-10 px-6 sm:px-6 lg:px-8">
           <div className="max-w-md w-full space-y-8">
             <h1 className="justify-center font-bold text-3xl"> Add Firebase data </h1>
-            <form method="post" className="mt-8 space-y-6" onSubmit={onSubmit}>
+            <form  className="mt-8 space-y-6" onSubmit={onSubmit}>
 
 
               <div>
